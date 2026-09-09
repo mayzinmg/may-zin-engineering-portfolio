@@ -1,24 +1,136 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
 const pageTitle = "May Zin | Engineering Portfolio";
 const description =
-  "Software engineering projects, learning progress and technical ideas.";
+  "Data engineering, software engineering and responsible agentic AI projects by May Zin.";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
-    <title>{pageTitle}</title>
-  </head>
-
-  <body>
-    <main>
-      <h1>May Zin</h1>
-      <p>
-        Software engineer documenting projects, learning and technical ideas.
+<BaseLayout title={pageTitle} description={description}>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <p class="eyebrow">
+        DATA ENGINEERING · SOFTWARE ENGINEERING · AGENTIC AI
       </p>
-    </main>
-  </body>
-</html>
+
+      <h1 id="hero-title">
+        Building sensible, reliable and resilient systems—responsibly.
+      </h1>
+
+      <div class="introduction">
+        <p>
+          Stranded in a foreign land, I wander as a free-spirited
+          engineer—part hermit, part pilgrim—with a Diogenes-inspired lamp
+          in hand. I travel through data systems, agentic AI, books and
+          places, gathering whatever knowledge the world has to offer.
+        </p>
+
+        <p>
+          This portfolio is my living notebook: part engineering workshop,
+          part field journal, documenting what I build, what I question and
+          what I learn along the way.
+        </p>
+      </div>
+
+      <p class="personal-note">AVID READER · PILGRIM</p>
+
+      <a class="primary-link" href="/projects/">Explore the projects</a>
+    </div>
+
+    <aside class="field-note" aria-label="Engineering field note">
+      <span class="lamp" aria-hidden="true">🏮</span>
+      <p class="note-number">FIELD NOTE / 001</p>
+     <p class="note-text">
+  Knowledge is power.<br />
+  Curiosity is the compass.<br />
+  Responsibility is the guardrail.
+</p>
+    </aside>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(14rem, 0.7fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+
+  .eyebrow,
+  .personal-note,
+  .note-number {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.5rem;
+    color: var(--colour-primary);
+    letter-spacing: 0.08em;
+  }
+
+  .introduction {
+    margin-block: 2rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+  }
+
+  .personal-note {
+    margin-bottom: 2rem;
+    color: var(--colour-primary);
+       letter-spacing: 0.08em;
+  }
+
+  .primary-link {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid var(--colour-primary);
+    border-radius: 999px;
+    background: var(--colour-primary);
+    color: var(--colour-surface);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .primary-link:hover {
+    background: transparent;
+    color: var(--colour-primary);
+  }
+
+  .field-note {
+    padding: 2rem;
+    border: 1px solid var(--colour-border);
+    border-top: 0.5rem solid var(--colour-playful);
+    border-radius: 0.75rem;
+    background: var(--colour-surface);
+    transform: rotate(1deg);
+  }
+
+  .lamp {
+    display: block;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+  }
+
+  .note-number {
+    margin-bottom: 0.75rem;
+    color: var(--colour-primary);
+  }
+
+  .note-text {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 48rem) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .field-note {
+      max-width: 24rem;
+      transform: none;
+    }
+  }
+</style>

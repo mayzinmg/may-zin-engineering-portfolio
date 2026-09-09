@@ -1,0 +1,66 @@
+:root {
+  --colour-background: #f7f4ea;
+  --colour-surface: #fffdf7;
+  --colour-text: #172a3a;
+  --colour-primary: #0f766e;
+  --colour-playful: #e8895a;
+  --colour-border: #d8d3c5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--colour-background);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--colour-background);
+  color: var(--colour-text);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+main {
+  width: min(70rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding-block: 5rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1;
+}
+
+p {
+  max-width: 60ch;
+}
+
+a {
+  color: var(--colour-primary);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--colour-playful);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--colour-playful);
+  color: var(--colour-text);
+}

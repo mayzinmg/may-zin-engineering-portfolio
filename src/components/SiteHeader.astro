@@ -1,0 +1,71 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">May Zin<span aria-hidden="true">.</span></a>
+
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/resume/">Resume</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--colour-border);
+    background: var(--colour-surface);
+  }
+
+  .header-inner {
+    display: flex;
+    width: min(70rem, calc(100% - 2rem));
+    min-height: 4.5rem;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .brand {
+    color: var(--colour-text);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .brand span {
+    color: var(--colour-playful);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--colour-text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--colour-primary);
+  }
+
+  @media (max-width: 42rem) {
+    .header-inner {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 1rem;
+    }
+  }
+</style>
