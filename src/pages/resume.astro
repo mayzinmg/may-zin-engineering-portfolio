@@ -1,0 +1,256 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Resume & Contact | May Zin";
+const description =
+  "Download May Zin's targeted engineering resumes or connect through email and LinkedIn.";
+
+const resumes = [
+  {
+    title: "Data & Analytics Resume",
+    label: "PRIMARY DIRECTION",
+    description:
+      "For data engineering, analytics engineering and Azure data-platform opportunities.",
+    href: "/resumes/may-zin-mg-data-analytics-resume.pdf",
+  },
+  {
+    title: "AI Applications Resume",
+    label: "SPECIALIST DIRECTION",
+    description:
+      "For AI-enabled applications, senior software engineering, backend and cloud opportunities.",
+    href: "/resumes/may-zin-mg-ai-applications-resume.pdf",
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <article class="contact-page">
+    <header class="contact-hero">
+      <p class="eyebrow">RESUME / CONTACT</p>
+      <h1>Choose the path most relevant to your opportunity.</h1>
+      <p class="lead">
+        My experience crosses data platforms, backend engineering and
+        AI-enabled applications. These targeted resumes present the same
+        professional history through two different engineering lenses.
+      </p>
+    </header>
+
+    <section aria-labelledby="resume-title">
+      <h2 id="resume-title">Download a Resume</h2>
+
+      <div class="resume-grid">
+        {
+          resumes.map((resume) => (
+            <article class="resume-card">
+              <p class="resume-label">{resume.label}</p>
+              <h3>{resume.title}</h3>
+              <p>{resume.description}</p>
+
+              <a
+                class="resume-link"
+                href={resume.href}
+                download
+                type="application/pdf"
+                aria-label={`Download ${resume.title} as a PDF`}
+              >
+                Download PDF <span aria-hidden="true">↓</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <p class="contact-marker" aria-hidden="true">✦</p>
+      <h2 id="contact-title">Start a Conversation</h2>
+
+      <p>
+        For professional opportunities and engineering conversations, connect
+        with me through email or LinkedIn.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:mayzin.ice@gmail.com">
+          Email May Zin
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/may-zin-mg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+<style>
+  .contact-page {
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+  }
+
+  .contact-hero {
+    position: relative;
+    max-width: 54rem;
+    padding-bottom: 2rem;
+  }
+
+  .contact-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5rem;
+    height: 0.35rem;
+    background: var(--colour-playful);
+    border-radius: 999px;
+  }
+
+  .eyebrow,
+  .resume-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+  }
+
+  .eyebrow {
+    color: var(--colour-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .lead {
+    max-width: 46rem;
+    color: var(--colour-primary);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    margin-top: 1.5rem;
+  }
+
+  .resume-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .resume-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-top: 0.5rem solid var(--colour-primary);
+    border-radius: 0.75rem;
+    box-shadow: 0.35rem 0.35rem 0 var(--colour-border);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .resume-card:nth-child(2) {
+    border-top-color: var(--colour-playful);
+  }
+
+  .resume-label {
+    display: inline-block;
+    color: var(--colour-primary);
+    margin-bottom: 1rem;
+  }
+
+  .resume-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .resume-card > p:not(.resume-label) {
+    max-width: 42ch;
+    margin-bottom: 2rem;
+  }
+
+  .resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: auto;
+    background: var(--colour-primary);
+    color: var(--colour-surface);
+    border: 2px solid var(--colour-primary);
+    border-radius: 0.4rem;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .resume-card:nth-child(2) .resume-link {
+    background: var(--colour-playful);
+    color: var(--colour-primary);
+  }
+
+  .resume-link:hover {
+    transform: translateY(-0.15rem);
+  }
+
+  .contact-section {
+    position: relative;
+    max-width: 48rem;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: 0.75rem;
+    box-shadow: 0.35rem 0.35rem 0 var(--colour-border);
+    padding: clamp(2rem, 5vw, 3rem);
+  }
+
+  .contact-marker {
+    color: var(--colour-playful);
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .contact-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-section > p:not(.contact-marker) {
+    max-width: 58ch;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 0.15rem solid var(--colour-playful);
+    padding-block: 0.35rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .resume-link:focus-visible,
+  .contact-links a:focus-visible {
+    outline: 0.2rem solid var(--colour-playful);
+    outline-offset: 0.25rem;
+  }
+
+  @media (max-width: 48rem) {
+    .resume-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-links {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resume-link:hover {
+      transform: none;
+    }
+  }
+</style>
