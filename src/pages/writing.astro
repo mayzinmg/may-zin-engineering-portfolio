@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { articles } from "../data/articles";
+
+const pageTitle = "Writing | May Zin";
+const description =
+  "Writing about data engineering, agentic AI, software, books, travel and films.";
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <article class="writing-page">
+    <header class="writing-hero">
+      <p class="eyebrow">WRITING / COLLECTED NOTES</p>
+      <h1>Ideas gathered from systems, books and distant places.</h1>
+      <p class="lead">
+        Essays and field notes about engineering, responsible AI and the
+        subjects I encounter beyond the workshop.
+      </p>
+    </header>
+
+    {
+      articles.length === 0 ? (
+        <section class="empty-state" aria-labelledby="empty-title">
+          <span class="empty-icon" aria-hidden="true">✍️</span>
+          <p class="note-number">FIELD NOTE / 000</p>
+          <h2 id="empty-title">The first notes are being prepared.</h2>
+          <p>
+            Published articles will appear here once they have completed their
+            final human review.
+          </p>
+        </section>
+      ) : (
+        <section aria-labelledby="articles-title">
+          <h2 id="articles-title">Published Notes</h2>
+
+          <div class="article-grid">
+            {articles.map((article) => (
+              <article class="article-card">
+                <p class="article-topic">{article.topic}</p>
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+
+               {
+                (article.publishedAt || article.readingTime) && (
+                    <p class="article-meta">
+                    {article.publishedAt}
+                    {article.publishedAt && article.readingTime && " · "}
+                    {article.readingTime}
+                    </p>
+                )
+                }
+
+                {article.url && (
+                  <a
+                    href={article.url}
+                    aria-label={`Read ${article.title} on Medium`}
+                  >
+                    Read on Medium <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>
+<style>
+  .writing-page {
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+  }
+
+  .writing-hero {
+    max-width: 52rem;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .writing-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5rem;
+    height: 0.35rem;
+    background: var(--colour-playful);
+    border-radius: 999px;
+  }
+
+  .eyebrow,
+  .note-number,
+  .article-topic,
+  .article-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+  }
+
+  .eyebrow,
+  .article-topic {
+    color: var(--colour-primary);
+    letter-spacing: 0.08em;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .lead {
+    max-width: 44rem;
+    color: var(--colour-primary);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    margin-top: 1.5rem;
+  }
+
+  .empty-state {
+    max-width: 42rem;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-top: 0.5rem solid var(--colour-playful);
+    border-radius: 0.75rem;
+    box-shadow: 0.4rem 0.4rem 0 var(--colour-border);
+    padding: clamp(2rem, 6vw, 3.5rem);
+    transform: rotate(-0.5deg);
+  }
+
+  .empty-icon {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 2.75rem;
+  }
+
+  .note-number {
+    color: var(--colour-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .empty-state h2 {
+    margin-bottom: 1rem;
+  }
+
+  .empty-state p:last-child {
+    margin-bottom: 0;
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-top: 0.4rem solid var(--colour-primary);
+    border-radius: 0.75rem;
+    padding: 2rem;
+  }
+
+  .article-card:nth-child(even) {
+    border-top-color: var(--colour-playful);
+  }
+
+  .article-topic {
+    margin-bottom: 1rem;
+  }
+
+  .article-meta {
+    color: var(--colour-primary);
+  }
+
+  .article-card a {
+    align-self: flex-start;
+    margin-top: auto;
+    font-weight: 600;
+  }
+
+  @media (max-width: 48rem) {
+    .empty-state {
+      transform: none;
+    }
+
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
