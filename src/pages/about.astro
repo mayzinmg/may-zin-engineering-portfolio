@@ -1,0 +1,220 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "About | May Zin";
+const description =
+  "About May Zin, a software engineer exploring data engineering, agentic AI and responsible AI-assisted development.";
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <article class="about-page">
+  <header class="about-hero">
+    <p class="eyebrow">ABOUT / FIELD NOTES</p>
+    <h1>Engineering, curiosity and continuous learning.</h1>
+    <p class="lead">
+      A software engineer exploring reliable data systems, responsible
+      agentic AI and better ways to learn.
+    </p>
+  </header>
+
+  <div class="about-sections">
+    <section aria-labelledby="who-i-am">
+      <div class="section-heading">
+  <span class="section-icon" aria-hidden="true">🧭</span>
+  <h2 id="who-i-am">Who I Am</h2>
+</div>
+
+      <p>
+        I have worked as a software engineer for many years. Living and
+        working in Singapore—one of Southeast Asia’s major business hubs—has
+        given me an environment where I can continue learning and growing
+        professionally.
+      </p>
+
+      <p>
+        Data has become a foundation of modern systems. Organisations collect
+        and transform it to generate insights, support decisions and prepare
+        trustworthy inputs for AI. At the same time, the AI ecosystem is
+        maturing, with greater attention being paid to security, governance
+        and access control.
+      </p>
+
+      <p>
+        Technology moves quickly, and I believe engineers should never stop
+        learning. I am especially drawn to experimentation, research and
+        unfamiliar problems rather than repetitive work. Curiosity and the
+        desire to understand how systems work are what keep me learning.
+      </p>
+    </section>
+
+    <section aria-labelledby="what-i-work-on">
+      <div class="section-heading">
+  <span class="section-icon" aria-hidden="true">⚙️</span>
+  <h2 id="what-i-work-on">What I Work On</h2>
+</div>
+
+      <p>
+        I build and maintain business software using C# and SQL, with an
+        emphasis on reliable data flows, system integrations and maintainable
+        solutions. My current direction extends into data engineering, where I
+        explore Azure Data Factory, Synapse, Databricks, Spark and lakehouse
+        architecture through hands-on projects.
+      </p>
+
+      <p>
+        Alongside this, I study agentic AI—not merely how agents call tools,
+        but how permissions, human approval, tracing, testing and guardrails
+        can make them trustworthy. I am most interested in the point where
+        practical engineering and responsible experimentation meet.
+      </p>
+    </section>
+
+    <section aria-labelledby="how-i-learn">
+      <div class="section-heading">
+  <span class="section-icon" aria-hidden="true">🧪</span>
+  <h2 id="how-i-learn">How I Build and Learn</h2>
+</div>
+
+      <p>
+        AI assistants can shorten the feedback loop and make unfamiliar
+        subjects easier to approach. However, speed is not correctness. I do
+        not want to accept suggestions simply because they arrive instantly.
+      </p>
+
+      <p>
+        I question assumptions, resolve doubts, inspect generated work and
+        test it before making a decision. To ask useful questions and judge
+        the answers, we still need underlying knowledge. Engineers are not
+        becoming extinct; we are evolving into more capable, AI-augmented
+        engineers.
+      </p>
+    </section>
+
+    <section aria-labelledby="beyond-engineering">
+      <div class="section-heading">
+  <span class="section-icon" aria-hidden="true">📚</span>
+  <h2 id="beyond-engineering">Beyond Engineering</h2>
+</div>
+
+      <p>
+        Beyond my professional work, I am an avid reader who has always
+        devoured books. I am drawn to science fiction, non-fiction, culture,
+        history, ancient knowledge, horror and thrillers. These different
+        worlds continually feed my curiosity and influence the way I think as
+        an engineer.
+      </p>
+
+      <p>
+        I also love travelling to faraway lands shaped by rich cultures, long
+        histories and natural beauty. To me, reading and travelling are both
+        forms of exploration: they reveal new ways to understand people,
+        systems and the world around us.
+      </p>
+    </section>
+  </div>
+</article>
+</BaseLayout>
+<style>
+  .about-page {
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+  }
+
+  .about-hero {
+    max-width: 52rem;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .about-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5rem;
+    height: 0.35rem;
+    background: var(--colour-playful);
+    border-radius: 999px;
+  }
+
+  .eyebrow {
+    color: var(--colour-primary);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+  }
+
+  .lead {
+    max-width: 44rem;
+    color: var(--colour-primary);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    margin-top: 1.5rem;
+  }
+
+  .about-sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .about-sections section {
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-top: 0.4rem solid var(--colour-primary);
+    border-radius: 0.75rem;
+    box-shadow: 0.35rem 0.35rem 0 var(--colour-border);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .about-sections section:first-child,
+  .about-sections section:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .about-sections section:nth-child(even) {
+    border-top-color: var(--colour-playful);
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+  }
+
+  .section-icon {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    place-items: center;
+    background: var(--colour-background, #f7f4ea);
+    border: 1px solid var(--colour-border);
+    border-radius: 50%;
+    font-size: 1.3rem;
+  }
+
+  .about-sections p {
+    max-width: 72ch;
+  }
+
+  .about-sections p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 48rem) {
+    .about-sections {
+      grid-template-columns: 1fr;
+    }
+
+    .about-sections section:first-child,
+    .about-sections section:last-child {
+      grid-column: auto;
+    }
+  }
+</style>
